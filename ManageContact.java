@@ -27,4 +27,8 @@ public class ManageContact {
     public String getPhoneNumber(){
         return phoneNumber;
     }
+
+    public void showInformations(){
+        System.out.println( firstname + " " +lastname.toUpperCase() + " : " + phoneNumber );
+    }
 }
