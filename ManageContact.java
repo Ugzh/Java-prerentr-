@@ -7,11 +7,11 @@ public class ManageContact {
 
     Scanner listenKeyboard = new Scanner(System.in);
     public ManageContact(){
-        System.out.print("Entrez son nom :");
+        System.out.print("Entrez son nom : ");
         lastname = listenKeyboard.next();
-        System.out.print("Entrez son prénom :");
+        System.out.print("Entrez son prénom : ");
         firstname = listenKeyboard.next();
-        System.out.print("Entrez son numéro de téléphone :");
+        System.out.print("Entrez son numéro de téléphone : ");
         phoneNumber = listenKeyboard.next();
     }
 

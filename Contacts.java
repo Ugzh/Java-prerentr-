@@ -25,15 +25,16 @@ public class Contacts {
                     do {
                         menu.getMenuByCategory("add");
                         select = keyboardListener.nextByte();
+                        System.out.println();
                         if(select == 1) contactManipulation.add(new ManageContact());
                     } while (select != 2);
                     break;
                 case 2 :
+                    System.out.println();
+                    System.out.println("Rechercher un contact");
                     do {
                         System.out.println();
-                        System.out.println("Rechercher un contact");
-                        System.out.println();
-                        System.out.print("Entrez le nom ou le prénom du contact à chercher : ");
+                        System.out.print("Entrez le nom ou le prénom du contact à rechercher : ");
                         String username = keyboardListener.next();
                         System.out.println();
                         if(contactManipulation.stream().anyMatch(c -> c.getLastname().contains(username) || c.getFirstname().contains(username))){
@@ -93,6 +94,7 @@ public class Contacts {
                     break;
             }
         } while (choice != 4);
+        System.out.println();
         System.out.println("A bientôt ");
         System.exit(0);
     }
