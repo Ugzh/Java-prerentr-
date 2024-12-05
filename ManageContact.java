@@ -12,6 +12,7 @@ public class ManageContact {
         lastname = listenKeyboard.next();
         System.out.print("Entrez son prénom :");
         firstname = listenKeyboard.next();
+        firstname = firstname.replace(firstname.charAt(0), Character.toUpperCase(firstname.charAt(0)));
         System.out.print("Entrez son numéro de téléphone :");
         phoneNumber = listenKeyboard.next();
     }

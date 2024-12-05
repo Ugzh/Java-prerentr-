@@ -6,7 +6,13 @@ public class Contacts {
         byte select;
         ArrayList<ManageContact> contactManipulation = new ArrayList<>();
         Scanner keyboardListener = new Scanner(System.in);
-        do {
+        System.out.println("*****************************");
+        System.out.println("*****************************");
+        System.out.println("**                         **");
+        System.out.println("**     APPLI CONTACTS      **");
+        System.out.println("**                         **");
+        System.out.println("*****************************");
+        System.out.println("*****************************");        do {
             Menu menu = new Menu();
             choice = keyboardListener.nextByte();
             switch (choice){
@@ -30,17 +36,52 @@ public class Contacts {
                                     .filter(c -> c.getLastname().contains(username) || c.getFirstname().contains(username))
                                     .forEach(ManageContact::showInformations);
                         } else {
-                            System.out.println("Aucune correspondance n'a été trouvée ! (sur " + (contactManipulation.size() + 1) + " contact(s))");
+                            System.out.println("Aucune correspondance n'a été trouvée ! (sur " + (contactManipulation.size() ) + " contact(s))");
                         }
                         menu.getMenuByCategory("search");
                         select = keyboardListener.nextByte();
                     } while (select != 2);
                 case 3 :
-                    System.out.println("choix 3");
+                    if(!contactManipulation.isEmpty()) {
+                        System.out.println("Liste de contacts");
+                        System.out.println();
+                        menu.getMenuByCategory("order");
+                        select = keyboardListener.nextByte();
+                        if (select == 1) {
+                            contactManipulation.stream()
+                                    .sorted(Comparator.comparing(ManageContact::getLastname))
+                                    .forEach(ManageContact::showInformations);
+                        } else {
+                            contactManipulation.stream()
+                                    .sorted(Comparator.comparing(ManageContact::getLastname)
+                                    .reversed())
+                                    .forEach(ManageContact::showInformations);
+                        }
+                        do {
+                            menu.getMenuByCategory("show");
+                            select = keyboardListener.nextByte();
+                            if(select == 3){
+                                menu.getMenuByCategory("order");
+                                select = keyboardListener.nextByte();
+                                if (select == 1) {
+                                    contactManipulation.stream()
+                                            .sorted(Comparator.comparing(ManageContact::getLastname))
+                                            .forEach(ManageContact::showInformations);
+                                } else {
+                                    contactManipulation.stream()
+                                            .sorted(Comparator.comparing(ManageContact::getLastname)
+                                                    .reversed())
+                                            .forEach(ManageContact::showInformations);
+                                }
+                            }
+                        } while (select != 4);
+                    } else System.out.println("Il n'y a aucun contact à afficher !");
                     break;
                 default:
                     break;
             }
         } while (choice != 4);
+        System.out.println("A bientôt ");
+        System.exit(0);
     }
 }

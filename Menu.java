@@ -1,4 +1,7 @@
 public class Menu {
+    private int [][] welcome = new int[6][28];
+
+
     public Menu(){
         System.out.println("");
         System.out.println("1 -> Ajouter un contact");
@@ -22,8 +25,8 @@ public class Menu {
                 break;
             case "show":
                 System.out.println("");
-                System.out.println("1 -> Lister les contacts à nouveau");
-                System.out.println("2 -> Retour au menu principal");
+                System.out.println("3 -> Lister les contacts à nouveau");
+                System.out.println("4 -> Retour au menu principal");
                 break;
             case "order":
                 System.out.println("");
