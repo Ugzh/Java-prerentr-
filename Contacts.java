@@ -12,11 +12,13 @@ public class Contacts {
         System.out.println("**     APPLI CONTACTS      **");
         System.out.println("**                         **");
         System.out.println("*****************************");
-        System.out.println("*****************************");        do {
+        System.out.println("*****************************");
+        do {
             Menu menu = new Menu();
             choice = keyboardListener.nextByte();
             switch (choice){
                 case 1 :
+                    System.out.println();
                     System.out.println("Ajouter un nouveau contact");
                     System.out.println();
                     contactManipulation.add(new ManageContact());
@@ -28,9 +30,12 @@ public class Contacts {
                     break;
                 case 2 :
                     do {
+                        System.out.println();
                         System.out.println("Rechercher un contact");
+                        System.out.println();
                         System.out.print("Entrez le nom ou le prénom du contact à chercher : ");
                         String username = keyboardListener.next();
+                        System.out.println();
                         if(contactManipulation.stream().anyMatch(c -> c.getLastname().contains(username) || c.getFirstname().contains(username))){
                             contactManipulation.stream()
                                     .filter(c -> c.getLastname().contains(username) || c.getFirstname().contains(username))
@@ -41,12 +46,15 @@ public class Contacts {
                         menu.getMenuByCategory("search");
                         select = keyboardListener.nextByte();
                     } while (select != 2);
+                    break;
                 case 3 :
                     if(!contactManipulation.isEmpty()) {
+                        System.out.println();
                         System.out.println("Liste de contacts");
                         System.out.println();
                         menu.getMenuByCategory("order");
                         select = keyboardListener.nextByte();
+                        System.out.println();
                         if (select == 1) {
                             contactManipulation.stream()
                                     .sorted(Comparator.comparing(ManageContact::getLastname))
@@ -63,6 +71,7 @@ public class Contacts {
                             if(select == 3){
                                 menu.getMenuByCategory("order");
                                 select = keyboardListener.nextByte();
+                                System.out.println();
                                 if (select == 1) {
                                     contactManipulation.stream()
                                             .sorted(Comparator.comparing(ManageContact::getLastname))
@@ -75,7 +84,10 @@ public class Contacts {
                                 }
                             }
                         } while (select != 4);
-                    } else System.out.println("Il n'y a aucun contact à afficher !");
+                    } else {
+                        System.out.println();
+                        System.out.println("Il n'y a aucun contact à afficher !");
+                    }
                     break;
                 default:
                     break;
